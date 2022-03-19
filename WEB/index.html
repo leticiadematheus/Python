@@ -1,0 +1,189 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo web</title>
+    <!-- os script vao geralmente no fim do bpdy pra n demorar pra pg carregar-->
+    <script>
+
+    </script><!--css pra deixar bonitnho-->
+    <style>
+        #pagina {
+            width: 50%;
+            height: 100%;
+            margin: auto;
+            background-color: turquoise;
+        }
+
+        h1, h2 {
+            color:deeppink;
+        }
+
+        table, th, td{
+            border: 1px solid black ;
+        }
+
+        table.center {
+            width: 400px;
+            height: 100px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        footer{
+            text-align: center;
+            padding: 30px;
+            background-color: blueviolet;
+            color: aquamarine;
+        }
+       
+    </style>
+</head>
+<body onload="autoOpacidade()">
+    <div id="pagina"></div>
+    <!-- comentario aqui dentro vai executar um java script-->
+    <script>
+        //comentario de script esse mostra msg p/ uyser quando abre a pg
+       //alert('Hello wolrd!');     
+        var pagina = document.getElementById('pagina')//acessar  objeto (ver objetos do javascript)
+       //alert(pagina);//sem ' vai mostrar o objeto, nesse caso vai mostrar a pg
+       let indImagem = 1;
+       let opacidade = 1;
+       let reduzir = true;
+       let posX = 10;
+       let ir = true;
+       
+       
+        pagina.innerHTML = '<h2> Exemplo for </h2>'
+        //for (inicialização; condição; incremento)
+        for (i=1; i<5 ; i++){
+            //alert(i);
+            pagina.innerHTML +='<h3>' + i + '</h3>';
+        }
+        pagina.innerHTML+='<h2>Exemplo do while </h2>'
+        var i = 1;
+        do{
+            pagina.innerHTML +='<h3>' + i + '</h3>';
+            i++;
+         }while(i<5);
+
+         //pagina
+
+         pagina.innerHTML += '<img id = "imagem" onclick="trocarImagem()" src="https://softgraf.com/img/img1.jpg"/>'
+         
+
+         function trocarImagem(){
+            var imagem = document.getElementById('imagem');
+            indImagem++;
+            
+            if (indImagem > 7 ){
+                indImagem = 1;
+            }
+            imagem.src = "https://softgraf.com/img/img" + indImagem + ".jpg";
+         }
+
+         //function mudarOpacidade(){ pode ser escrito assim tbm
+        const mudarOpacidade = () => {
+            var imagem = document.getElementById('imagem');
+            
+            if (opacidade < 0.1 ){
+                reduzir = false;
+                trocarImagem();
+            }else if (opacidade >= 1){
+                reduzir = true;
+            }
+
+            if (reduzir){
+                opacidade -= 0.1;
+            }else {opacidade += 0.1
+            }
+            imagem.style.opacity = opacidade;
+            moverImagem();
+         }
+         const autoOpacidade = () => {
+             setInterval("mudarOpacidade()",100); //0.1 segundo
+         }
+        const moverImagem=()=>{
+            if (ir) {
+                posX+=10;
+            }else {
+                 posX -=10;
+            }
+            if(posX>310){
+                ir = false;
+            }else if (posX <0){
+                    ir = true;
+                }
+            var imagem = document.getElementById('imagem');
+            imagem.style.marginLeft = posX;
+           
+
+            
+        }
+       </script>
+       
+       <!--<img src="https://realidadesimulada.com/wp-content/uploads/2018/01/universo-5.jpg" alt="Imagem Curso">-->
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt voluptas, tempore, quisquam ut aperiam excepturi maxime hic <br>provident itaque nisi culpa eum repudiandae et sapiente consectetur est adipisci consequuntur at.
+        </p>
+        <label>Baixando arquivo:</label>
+        <progress value = "32" max = "100"> 32%</progress>
+        <ol type = "I"> <!-- ordenated list numera os itens-->
+            <li> Item 1 </li>
+            <li> Item 2 </li>
+            <li> Item 3 </li>
+        </ol>        
+        <ul style = "list-style-type: square;">    <!--lista nao ordenada-->
+            <li>    oi1</li>
+            <li>    oi2</li>
+        </ul>
+        <hr>
+        <iframe width="1120" height="630" src="https://www.youtube.com/embed/QJJqm5cClxk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+        <form action = "https://meu_programa.py" method = "post">  <!--ao clicar submit envia pra essa pasta, q não existe nesse caso, post nao deixa as variaveis visiveis quando envia-->
+            <label> Nome: </label>
+            <input type = "text" name = "nome"><br>  
+            <label> Sobrenome: </label>
+            <input type = "text" name = "sobrenome"><br> 
+            <input type = "submit"><br> 
+        </form>
+        <canvas id = "meuCanvas">    </canvas>
+        <script>    
+            var canvas = document.getElementById('meuCanvas');
+            var ctx =  canvas.getContext('2d');
+            ctx.fillStyle = 'red'
+            ctx.fillRect(20,20,75,50);
+            ctx.fillStyle = 'black'
+            ctx.globalAlpha = 0.2;//cria transparencia
+            ctx.fillRect(50,50,75,50);
+
+            ctx.fillStyle = 'green'
+            ctx.globalAlpha = 0.2;//cria transparencia
+            ctx.fillRect(80,80,75,50);
+        </script>
+        <h1> Exemplo link </h1>
+        <a href = "https:\\softgraf.com" target = "_blank">Cursos Avançados</a>
+
+        <h1> Exemplo tabela </h1>
+        <table class="center">
+            <tr>    
+                <!--dados do header-->
+                <th>Mes</th>
+                <th>Recebimento</th>            
+            </tr>
+                <td>Janeiro</td>
+                <td>R$ 100</td>
+            </tr>
+            <tr>
+                <td>Fevereiro</td>
+                <td>R$ 200</td>
+            <tr>
+
+            </tr>
+        </table>
+        <footer>
+            <p>Autor:Leticia</p>
+            <a href="https:\\softgraf.com" target ="_blank">SOFTGRAF Cursos avançados</a>
+        </footer>
+</body>
+</html>
