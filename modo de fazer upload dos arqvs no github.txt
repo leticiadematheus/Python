@@ -1,0 +1,14 @@
+git init
+E: 
+cd [nome da pasta do curso]
+git init
+nome pasta/.git
+git add
+git commit -m "versao inicial"
+git branch -M aula3
+git remote add origin https://github.com/leticia...(nome do repositorio do git hub)/python.git
+git push -u origin aula3
+
+
+
+
